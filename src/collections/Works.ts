@@ -7,26 +7,7 @@ import { convertLexicalToPlaintext } from "@payloadcms/richtext-lexical/plaintex
 import type { CollectionConfig, Field } from "payload";
 import slugify from "slugify";
 import urlField from "./fields/url-field";
-
-function trimRichTextContent(value: any) {
-  if (
-    value.root?.children?.length > 1 &&
-    value.root?.children[value.root?.children?.length - 1] &&
-    value.root?.children[value.root?.children?.length - 1].type ===
-      "paragraph" &&
-    value.root?.children[value.root?.children?.length - 1].children?.length ===
-      0
-  ) {
-    var trimmedChildren = [...value.root?.children];
-    trimmedChildren.pop();
-    return trimRichTextContent({
-      ...value,
-      root: { ...value.root, children: trimmedChildren },
-    });
-  } else {
-    return value;
-  }
-}
+import { trimRichTextContent } from "@/lib/utils";
 
 export const Works: CollectionConfig = {
   slug: "works",

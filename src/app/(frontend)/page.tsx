@@ -11,6 +11,7 @@ import Player from "@/components/Player";
 import WorkItem from "@/components/WorkItem";
 import { Media } from "@/payload-types";
 import ReactPlayer from "react-player";
+import About from "@/components/About";
 
 export type BlogPageProps = {
   searchParams: Promise<{ page: string; preview: string }>;
@@ -72,6 +73,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           loop
         />
       </div>
+      <About />
       <div className="grid gap-4 gap-y-8 p-4 md:grid-cols-2">
         {docs.map((doc) => {
           return <WorkItem key={doc.id} work={doc} />;

@@ -8,7 +8,7 @@ export type PlayerProps = { videoUrl: string };
 export default function Player({ videoUrl }: PlayerProps) {
   const playerRef = useRef(null);
   return (
-    <div className="aspect-video max-h-[calc(100svh-256px)] w-full">
+    <div className="aspect-video max-h-[calc(100svh-128px)] w-full md:max-h-[calc(100svh-256px)]">
       <ReactPlayer
         ref={playerRef}
         src={videoUrl}

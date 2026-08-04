@@ -30,7 +30,7 @@ export default function ContactDialog({ data }: ContactDialogProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="cursor-pointer text-[10px] tracking-widest uppercase max-[430px]:tracking-wide sm:text-xs">
+        <button className="w-fit cursor-pointer rounded-xs bg-stone-900 px-4 py-2 text-[11px] font-medium tracking-widest uppercase decoration-cyan-500/70 decoration-2 underline-offset-4 hover:underline max-[430px]:tracking-wide sm:text-xs">
           Contato
         </button>
       </DialogTrigger>
@@ -45,7 +45,7 @@ export default function ContactDialog({ data }: ContactDialogProps) {
             <p className="w-full">{data.email}</p>
             <div className="flex gap-2">
               <Button
-                size="xs"
+                size="sm"
                 variant={"secondary"}
                 onClick={() => copy(data.email || "")}
               >
@@ -57,7 +57,7 @@ export default function ContactDialog({ data }: ContactDialogProps) {
             <p className="w-full">{data.phone}</p>
             <div className="flex gap-2">
               <Button
-                size="xs"
+                size="sm"
                 variant={"secondary"}
                 onClick={() => copy(data.phone || "")}
               >
@@ -69,7 +69,7 @@ export default function ContactDialog({ data }: ContactDialogProps) {
             <p className="w-full">https://www.valentinadenuzzo.com.br</p>
             <div className="flex gap-2">
               <Button
-                size="xs"
+                size="sm"
                 variant={"secondary"}
                 onClick={() => copy("https://www.valentinadenuzzo.com.br")}
               >
