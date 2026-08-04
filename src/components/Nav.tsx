@@ -20,7 +20,9 @@ export default async function Nav(props: NavProps) {
           | {home.description}
         </span>
       </Link>
-      <ContactDialog contactInfo={home.contact} />
+      <div className="flex items-center gap-2">
+        <ContactDialog contactInfo={home.contact} />
+      </div>
     </nav>
   );
 }

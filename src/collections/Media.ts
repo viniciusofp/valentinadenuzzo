@@ -3,7 +3,11 @@ import type { CollectionConfig } from "payload";
 export const Media: CollectionConfig = {
   labels: { singular: "Imagem", plural: "Imagens" },
   slug: "media",
-
+  access: {
+    read: () => {
+      return true;
+    },
+  },
   admin: { group: "Arquivos" },
   upload: {
     staticDir: "media",
