@@ -1,12 +1,12 @@
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import Nav from "@/components/Nav";
+import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { WebVitals } from "@/components/WebVitals";
-import { Cormorant_Garamond, Hanken_Grotesk, Parastoo } from "next/font/google";
+import { Hanken_Grotesk, Parastoo } from "next/font/google";
+import Link from "next/link";
 import React from "react";
 import "./styles.css";
-import Link from "next/link";
-import { ReactLenis, useLenis } from "lenis/react";
-import Nav from "@/components/Nav";
 
 // export const metadata = {
 //   description: "A blank template using Payload in a Next.js app.",
@@ -30,8 +30,6 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   return (
     <html lang="en" className={`${hanken.variable} ${parastoo.variable}`}>
-      <ReactLenis root />
-
       <body className="dark font-sans antialiased">
         <TooltipProvider>
           <Nav />
@@ -54,6 +52,8 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
             .
           </footer>
         </TooltipProvider>
+
+        <Toaster />
       </body>
     </html>
   );

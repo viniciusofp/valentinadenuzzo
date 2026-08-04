@@ -26,24 +26,7 @@ export const BlogInfo: GlobalConfig = {
       relationTo: "media",
       required: true,
     },
-    {
-      name: "contact",
-      label: "Informações de Contato",
-      type: "richText",
-      required: true,
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => [
-          ...rootFeatures,
-          FixedToolbarFeature({
-            applyToFocusedEditor: false, // Apply to focused editor
-            customGroups: {
-              format: {
-                // Custom configuration for format group
-              },
-            },
-          }),
-        ],
-      }),
-    },
+    { name: "email", type: "email", label: "E-mail" },
+    { name: "phone", type: "text", label: "Telefone" },
   ],
 };
