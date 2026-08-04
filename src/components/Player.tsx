@@ -1,14 +1,17 @@
 "use client";
 
+import { useRef } from "react";
 import ReactPlayer from "react-player";
 
-export type PlayerProps = {};
+export type PlayerProps = { videoUrl: string };
 
-export default function Player(props: PlayerProps) {
+export default function Player({ videoUrl }: PlayerProps) {
+  const playerRef = useRef(null);
   return (
-    <div className="aspect-video max-h-[80svh] w-full">
+    <div className="aspect-video max-h-[calc(100svh-256px)] w-full">
       <ReactPlayer
-        src="https://vimeo.com/664448862"
+        ref={playerRef}
+        src={videoUrl}
         autoPlay
         muted={true}
         className="h-full w-full object-cover"
@@ -18,6 +21,7 @@ export default function Player(props: PlayerProps) {
         // light={
         //   <img src="https://i.vimeocdn.com/video/1515732489-eab3fe43638be9b0e1214bb9a3f0254f35e6cfe56ee96481473c013b0238c7db-d?region=us" />
         // }
+        loop
         config={{
           vimeo: {
             // @ts-ignore

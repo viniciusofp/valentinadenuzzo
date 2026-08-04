@@ -16,41 +16,8 @@ export const BlogInfo: GlobalConfig = {
     {
       name: "description",
       label: "Descrição",
-      type: "richText",
+      type: "textarea",
       required: true,
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => [
-          ...rootFeatures,
-          FixedToolbarFeature({
-            applyToFocusedEditor: false, // Apply to focused editor
-            customGroups: {
-              format: {
-                // Custom configuration for format group
-              },
-            },
-          }),
-        ],
-      }),
-    },
-
-    {
-      name: "footerMessage",
-      label: "Recado no rodapé",
-      type: "richText",
-      required: true,
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => [
-          ...rootFeatures,
-          FixedToolbarFeature({
-            applyToFocusedEditor: false, // Apply to focused editor
-            customGroups: {
-              format: {
-                // Custom configuration for format group
-              },
-            },
-          }),
-        ],
-      }),
     },
   ],
 };

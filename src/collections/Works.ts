@@ -4,7 +4,7 @@ import {
   lexicalEditor,
 } from "@payloadcms/richtext-lexical";
 import { convertLexicalToPlaintext } from "@payloadcms/richtext-lexical/plaintext";
-import type { CollectionConfig } from "payload";
+import type { CollectionConfig, Field } from "payload";
 import slugify from "slugify";
 import urlField from "./fields/url-field";
 
@@ -31,11 +31,11 @@ function trimRichTextContent(value: any) {
 export const Works: CollectionConfig = {
   slug: "works",
   defaultPopulate: { slug: true },
-  labels: { singular: "Work", plural: "Works" },
+  labels: { singular: "Trabalho", plural: "Trabalhos" },
   trash: true,
   orderable: true,
   admin: {
-    useAsTitle: "content",
+    useAsTitle: "title",
     components: {
       edit: {
         beforeDocumentControls: [
@@ -61,66 +61,8 @@ export const Works: CollectionConfig = {
     {
       name: "title",
       label: "Título",
-      type: "textarea",
-    },
-    {
-      name: "content",
-      label: "Conteúdo",
-      type: "richText",
+      type: "text",
       required: true,
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => [
-          ...rootFeatures,
-          FixedToolbarFeature({
-            applyToFocusedEditor: false, // Apply to focused editor
-            customGroups: {
-              format: {
-                // Custom configuration for format group
-              },
-            },
-          }),
-          BlocksFeature({
-            blocks: [
-              {
-                slug: "videoEmbed",
-                labels: { singular: "Vídeo", plural: "Vídeos" },
-                fields: [urlField],
-              },
-              {
-                slug: "code",
-                labels: {
-                  singular: "Código (Embed)",
-                  plural: "Códigos (Embed)",
-                },
-                fields: [{ name: "code", type: "code", label: "Código" }],
-              },
-              {
-                slug: "imageGallery",
-                labels: {
-                  singular: "Galeria de Imagem",
-                  plural: "Galerias de Imagem",
-                },
-                fields: [
-                  {
-                    name: "images",
-                    type: "upload",
-                    label: "Imagem",
-                    relationTo: "media",
-                    hasMany: true,
-                  },
-                ],
-              },
-            ],
-          }),
-        ],
-      }),
-      hooks: {
-        beforeValidate: [
-          ({ value }) => {
-            return value ? trimRichTextContent(value) : undefined;
-          },
-        ],
-      },
     },
 
     {
@@ -157,13 +99,76 @@ export const Works: CollectionConfig = {
       required: true,
       unique: true,
     },
-
+    { ...urlField, name: "videoUrl", label: "Vimeo Vídeo URL" } as Field,
     {
-      name: "categories",
-      type: "relationship",
-      label: { single: "Categoria", plural: "Categorias" },
-      relationTo: "categories",
+      name: "content",
+      label: "Conteúdo",
+      type: "richText",
+      required: true,
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          FixedToolbarFeature({
+            applyToFocusedEditor: false, // Apply to focused editor
+            customGroups: {
+              format: {
+                // Custom configuration for format group
+              },
+            },
+          }),
+        ],
+      }),
+      hooks: {
+        beforeValidate: [
+          ({ value }) => {
+            return value ? trimRichTextContent(value) : undefined;
+          },
+        ],
+      },
+    },
+    {
+      name: "frames",
+      type: "upload",
+      label: "Frames",
+      relationTo: "media",
       hasMany: true,
+    },
+    {
+      name: "metadata",
+      label: "Informações",
+      type: "group",
+      fields: [
+        {
+          type: "row",
+          fields: [
+            { name: "year", label: "Ano", type: "number", admin: { step: 1 } },
+            { name: "client", label: "Cliente", type: "text" },
+          ],
+        },
+        {
+          type: "row",
+          fields: [
+            {
+              name: "role",
+              label: "Cargo Exercido",
+              type: "text",
+              defaultValue: "Direção de Fotografia",
+              admin: {
+                description:
+                  "Ex.: direção de fotografia, assistência de direção, etc...",
+              },
+            },
+            {
+              name: "type",
+              label: "Tipo de Produção",
+              type: "text",
+              admin: {
+                description: "Ex.: curta-metragem, longa-metragem, etc...",
+              },
+            },
+          ],
+        },
+      ],
     },
   ],
 };

@@ -1,7 +1,11 @@
 import { getPayload } from "payload";
 
+import ExpandableContent from "@/components/ExpandableContent";
+import Frames from "@/components/Frames";
+import Player from "@/components/Player";
 import PreviewAlert from "@/components/PreviewAlert";
 import { RefreshRouteOnSave } from "@/components/RefreshRouteOnSave";
+import { Media, Work } from "@/payload-types";
 import config from "@/payload.config";
 import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 import { convertLexicalToPlaintext } from "@payloadcms/richtext-lexical/plaintext";
@@ -30,7 +34,7 @@ export async function generateMetadata(
     collection: "works",
     where: { slug: { equals: slug } },
   });
-  const work = works[0];
+  const work: Work = works[0];
   if (work) {
     const createdAt = new Date(work.createdAt);
     const plaintext = convertLexicalToPlaintext({
@@ -98,7 +102,61 @@ export default async function BlogPost({
     <>
       <RefreshRouteOnSave />
       {preview ? <PreviewAlert /> : null}
-      {work.title}
+      {work.videoUrl ? <Player videoUrl={work.videoUrl} /> : null}
+      <div className="mx-auto w-full max-w-3xl px-4">
+        <h1 className="my-4 font-serif text-3xl sm:text-4xl md:my-6 md:text-5xl">
+          {work.title}
+        </h1>
+        {work.metadata ? (
+          <div className="meta flex flex-col flex-wrap gap-y-3 sm:grid sm:grid-cols-2 lg:flex lg:flex-row lg:gap-x-12">
+            {work.metadata.year ? (
+              <div className="">
+                <p className="mb-px font-serif text-sm tracking-widest text-stone-500 uppercase">
+                  Ano
+                </p>
+                <p className="text-xs tracking-wider uppercase">
+                  {work.metadata?.year}
+                </p>
+              </div>
+            ) : null}
+            {work.metadata.role ? (
+              <div className="">
+                <p className="mb-px font-serif text-sm tracking-widest text-stone-500 uppercase">
+                  Cliente
+                </p>
+                <p className="text-xs tracking-wider uppercase">
+                  {work.metadata?.client}
+                </p>
+              </div>
+            ) : null}
+            {work.metadata.role ? (
+              <div className="">
+                <p className="mb-px font-serif text-sm tracking-widest text-stone-500 uppercase">
+                  Tipo de produção
+                </p>
+                <p className="text-xs tracking-wider uppercase">
+                  {work.metadata?.type}
+                </p>
+              </div>
+            ) : null}
+            {work.metadata.role ? (
+              <div className="">
+                <p className="mb-px font-serif text-sm tracking-widest text-stone-500 uppercase">
+                  Atividade
+                </p>
+                <p className="text-xs tracking-wider uppercase">
+                  {work.metadata?.role}
+                </p>
+              </div>
+            ) : null}
+          </div>
+        ) : null}
+
+        <ExpandableContent content={work.content} />
+        {work.frames && work.frames.length > 0 ? (
+          <Frames frames={work.frames as Media[]} />
+        ) : null}
+      </div>
     </>
   );
 }

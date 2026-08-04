@@ -132,7 +132,9 @@ export interface UserAuthOperations {
 export interface Work {
   id: string;
   _order?: string | null;
-  title?: string | null;
+  title: string;
+  slug: string;
+  videoUrl?: string | null;
   content: {
     root: {
       type: string;
@@ -148,23 +150,23 @@ export interface Work {
     };
     [k: string]: unknown;
   };
-  slug: string;
-  categories?: (string | Category)[] | null;
+  frames?: (string | Media)[] | null;
+  metadata?: {
+    year?: number | null;
+    client?: string | null;
+    /**
+     * Ex.: direção de fotografia, assistência de direção, etc...
+     */
+    role?: string | null;
+    /**
+     * Ex.: curta-metragem, longa-metragem, etc...
+     */
+    type?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
   deletedAt?: string | null;
   _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
- */
-export interface Category {
-  id: string;
-  name: string;
-  slug: string;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -225,6 +227,17 @@ export interface Media {
       filename?: string | null;
     };
   };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: string;
+  name: string;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -348,9 +361,18 @@ export interface PayloadMigration {
 export interface WorksSelect<T extends boolean = true> {
   _order?: T;
   title?: T;
-  content?: T;
   slug?: T;
-  categories?: T;
+  videoUrl?: T;
+  content?: T;
+  frames?: T;
+  metadata?:
+    | T
+    | {
+        year?: T;
+        client?: T;
+        role?: T;
+        type?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   deletedAt?: T;
@@ -500,36 +522,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface BlogInfo {
   id: string;
   name: string;
-  description: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  footerMessage: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
+  description: string;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -540,7 +533,6 @@ export interface BlogInfo {
 export interface BlogInfoSelect<T extends boolean = true> {
   name?: T;
   description?: T;
-  footerMessage?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
