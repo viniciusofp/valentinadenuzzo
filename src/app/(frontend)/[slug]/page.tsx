@@ -119,7 +119,7 @@ export default async function BlogPost({
                 </p>
               </div>
             ) : null}
-            {work.metadata.role ? (
+            {work.metadata.client ? (
               <div className="">
                 <p className="mb-px font-serif text-sm tracking-widest text-stone-500 uppercase">
                   Cliente
@@ -129,7 +129,7 @@ export default async function BlogPost({
                 </p>
               </div>
             ) : null}
-            {work.metadata.role ? (
+            {work.metadata.type ? (
               <div className="">
                 <p className="mb-px font-serif text-sm tracking-widest text-stone-500 uppercase">
                   Tipo de produção
