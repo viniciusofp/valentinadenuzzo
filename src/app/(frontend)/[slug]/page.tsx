@@ -44,7 +44,7 @@ export async function generateMetadata(
     return {
       title: `${preview ? "PREVIEW: " : ""}${
         work.title
-          ? `${work.title} - ${blogInfo.name}`
+          ? `${work.title} - ${blogInfo.name} - ${blogInfo.description}`
           : `${createdAt.toLocaleDateString("pt-BR", {
               day: "numeric",
               month: "long",
@@ -52,7 +52,7 @@ export async function generateMetadata(
             })} - ${createdAt.toLocaleTimeString("pt-BR", {
               hour: "2-digit",
               minute: "2-digit",
-            })} - ${blogInfo.name}`
+            })} - ${blogInfo.name} - ${blogInfo.description}`
       }`,
       description:
         plaintext.length > 160 ? `${plaintext.slice(0, 154)} (...)` : plaintext,

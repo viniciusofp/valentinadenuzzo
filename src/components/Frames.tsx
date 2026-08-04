@@ -10,7 +10,7 @@ export default function Frames(props: FramesProps) {
   return (
     <div className="my-6">
       {props.frames?.map((frame) => {
-        return <Frame frame={frame} />;
+        return <Frame key={frame.id} frame={frame} />;
       })}
     </div>
   );

@@ -19,5 +19,31 @@ export const BlogInfo: GlobalConfig = {
       type: "textarea",
       required: true,
     },
+    {
+      name: "reel",
+      label: "Reel",
+      type: "upload",
+      relationTo: "media",
+      required: true,
+    },
+    {
+      name: "contact",
+      label: "Informações de Contato",
+      type: "richText",
+      required: true,
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          FixedToolbarFeature({
+            applyToFocusedEditor: false, // Apply to focused editor
+            customGroups: {
+              format: {
+                // Custom configuration for format group
+              },
+            },
+          }),
+        ],
+      }),
+    },
   ],
 };

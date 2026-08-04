@@ -6,6 +6,7 @@ import React from "react";
 import "./styles.css";
 import Link from "next/link";
 import { ReactLenis, useLenis } from "lenis/react";
+import Nav from "@/components/Nav";
 
 // export const metadata = {
 //   description: "A blank template using Payload in a Next.js app.",
@@ -33,15 +34,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
       <body className="dark font-sans antialiased">
         <TooltipProvider>
-          <nav className="fixed top-0 z-99 flex h-14 w-full items-center bg-stone-950 px-4 lg:px-16">
-            <Link
-              href="/"
-              className="font-serif text-sm tracking-widest uppercase md:text-base"
-            >
-              Valentina Denuzzo{" "}
-              <span className="text-stone-500">| Direção de Fotografia</span>
-            </Link>
-          </nav>
+          <Nav />
           <main className="pt-14">
             {children}
             {/* Google Analytics - @next/third-parties optimized - loads after hydration */}
@@ -49,6 +42,17 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
             {/* Core Web Vitals Tracking */}
             <WebVitals />
           </main>
+          <footer className="mt-12 mb-6 text-center text-xs text-stone-400">
+            Desenvolvido por{" "}
+            <Link
+              href="https://www.viniciusofp.com.br"
+              className="font-semibold hover:underline"
+              target="_blank"
+            >
+              viniciusofp
+            </Link>
+            .
+          </footer>
         </TooltipProvider>
       </body>
     </html>

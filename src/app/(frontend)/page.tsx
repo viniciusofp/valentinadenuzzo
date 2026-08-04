@@ -9,6 +9,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Player from "@/components/Player";
 import WorkItem from "@/components/WorkItem";
+import { Media } from "@/payload-types";
+import ReactPlayer from "react-player";
 
 export type BlogPageProps = {
   searchParams: Promise<{ page: string; preview: string }>;
@@ -18,12 +20,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const payloadConfig = await config;
   const payload = await getPayload({ config: payloadConfig });
   const blogInfo = await payload.findGlobal({ slug: "blogInfo" });
-  const description = convertLexicalToPlaintext({
-    data: blogInfo.description as any,
-  });
+
   return {
-    title: `${blogInfo.name}`,
-    description: `${description}`,
+    title: `${blogInfo.name} - ${blogInfo.description}`,
+    description: `${blogInfo.description}`,
   };
 }
 export default async function BlogPage({ searchParams }: BlogPageProps) {
@@ -54,9 +54,24 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     draft: user && Boolean(preview) ? true : false,
   });
 
+  const home = await payload.findGlobal({ slug: "blogInfo" });
+
   return (
     <>
-      <Player videoUrl="https://vimeo.com/1140901163" />
+      <div className="aspect-video max-h-[calc(100svh-256px)] w-full">
+        <ReactPlayer
+          src={(home.reel as Media).url || ""}
+          autoPlay
+          className="h-full w-full object-cover"
+          width={"100%"}
+          height={"100%"}
+          muted
+          // light={
+          //   <img src="https://i.vimeocdn.com/video/1515732489-eab3fe43638be9b0e1214bb9a3f0254f35e6cfe56ee96481473c013b0238c7db-d?region=us" />
+          // }
+          loop
+        />
+      </div>
       <div className="grid gap-4 gap-y-8 p-4 md:grid-cols-2">
         {docs.map((doc) => {
           return <WorkItem key={doc.id} work={doc} />;

@@ -523,6 +523,22 @@ export interface BlogInfo {
   id: string;
   name: string;
   description: string;
+  reel: string | Media;
+  contact: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -533,6 +549,8 @@ export interface BlogInfo {
 export interface BlogInfoSelect<T extends boolean = true> {
   name?: T;
   description?: T;
+  reel?: T;
+  contact?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
