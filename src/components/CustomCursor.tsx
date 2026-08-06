@@ -20,11 +20,13 @@ export const CustomCursor = ({ className }: { className: string }) => {
         top: position.y,
       }}
       className={cn(
-        "pointer-events-none fixed z-90 flex -translate-y-1/2 items-center gap-2 rounded-full bg-stone-950 px-6 py-2 text-xs font-medium text-white",
+        "pointer-events-none fixed z-90 flex -translate-y-1/2 items-center gap-2 rounded-sm bg-black/20 px-6 py-2 text-xs font-medium text-white backdrop-blur-sm",
         className,
       )}
     >
-      <p className="text-xs tracking-wider uppercase">Saiba Mais</p>
+      <p className="font-mono text-[10px] tracking-widest uppercase">
+        Saiba Mais
+      </p>
     </div>
   );
 };

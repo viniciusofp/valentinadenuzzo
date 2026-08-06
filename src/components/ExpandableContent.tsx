@@ -18,13 +18,14 @@ export default function ExpandableContent({ content }: ExpandableContentProps) {
       </p>
       <div
         className={cn(
-          "relative max-h-19 min-h-8 overflow-hidden text-sm",
+          "relative max-h-19 min-h-10 overflow-hidden text-sm",
           show && "max-h-fit pb-12",
         )}
       >
         <button
           className={cn(
-            "absolute bottom-0 left-0 z-3 flex w-full cursor-pointer items-center justify-center gap-2 rounded-xs bg-stone-950 px-6 py-2 text-xs tracking-wider uppercase duration-300 hover:bg-stone-900",
+            "absolute bottom-0 left-0 z-3 flex w-full cursor-pointer items-center justify-center gap-2 rounded-xs bg-black/20 px-6 py-2 font-mono text-xs tracking-widest uppercase backdrop-blur-sm duration-300 hover:bg-sky-950",
+            !show && "h-full",
           )}
           onClick={() => setShow((prev) => !prev)}
         >

@@ -100,10 +100,14 @@ export default async function BlogPost({
   const createdAt = new Date(work.createdAt);
   const updatedAt = new Date(work.updatedAt);
   return (
-    <>
+    <div className="pt-16 lg:pt-0">
       <RefreshRouteOnSave />
       {preview ? <PreviewAlert /> : null}
-      {work.videoUrl ? <Player videoUrl={work.videoUrl} /> : null}
+      {work.videoUrl ? (
+        <div className="aspect-video w-full md:max-h-svh">
+          <Player videoUrl={work.videoUrl} />
+        </div>
+      ) : null}
       <div className="mx-auto w-full max-w-3xl px-4">
         <h1 className="my-4 font-serif text-3xl sm:text-4xl md:my-6 md:text-5xl">
           {work.title}
@@ -159,6 +163,6 @@ export default async function BlogPost({
         ) : null}
       </div>
       <About />
-    </>
+    </div>
   );
 }

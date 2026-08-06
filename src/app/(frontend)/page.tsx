@@ -3,15 +3,11 @@ import { headers as getHeaders } from "next/headers";
 import config from "@/payload.config";
 import { getPayload } from "payload";
 
-import { convertLexicalToPlaintext } from "@payloadcms/richtext-lexical/plaintext";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Metadata } from "next";
-import Link from "next/link";
-import Player from "@/components/Player";
+import About from "@/components/About";
 import WorkItem from "@/components/WorkItem";
 import { Media } from "@/payload-types";
+import { Metadata } from "next";
 import ReactPlayer from "react-player";
-import About from "@/components/About";
 
 export type BlogPageProps = {
   searchParams: Promise<{ page: string; preview: string }>;
@@ -59,7 +55,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
   return (
     <>
-      <div className="aspect-video max-h-[calc(100svh-256px)] w-full">
+      <div className="relative aspect-video max-h-svh min-h-72 w-full">
         <ReactPlayer
           src={(home.reel as Media).url || ""}
           autoPlay
@@ -74,7 +70,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         />
       </div>
       <About />
-      <div className="grid gap-4 gap-y-8 p-4 md:grid-cols-2">
+      <div id="filmes" className="grid gap-4 gap-y-8 p-4 md:grid-cols-2">
         {docs.map((doc) => {
           return <WorkItem key={doc.id} work={doc} />;
         })}

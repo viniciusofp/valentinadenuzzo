@@ -19,7 +19,7 @@ export default function WorkItem({ work }: WorkItemProps) {
           className="h-full w-full object-cover object-center group-hover:scale-105"
         />
       </div>
-      <h2 className="font-serif text-xl tracking-wide sm:text-2xl md:text-xl lg:text-2xl">
+      <h2 className="font-serif text-2xl tracking-wide sm:text-2xl md:text-xl lg:text-2xl">
         {work.title}
       </h2>
       <p className="text-xs tracking-wider text-stone-500 uppercase">

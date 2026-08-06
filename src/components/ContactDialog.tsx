@@ -13,12 +13,12 @@ import { BlogInfo } from "@/payload-types";
 import { Button } from "./ui/button";
 import { ClipboardIcon } from "lucide-react";
 import { useCopyToClipboard } from "usehooks-ts";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { toast } from "sonner";
 
-export type ContactDialogProps = { data: BlogInfo };
+export type ContactDialogProps = { data: BlogInfo; children: React.ReactNode };
 
-export default function ContactDialog({ data }: ContactDialogProps) {
+export default function ContactDialog({ data, children }: ContactDialogProps) {
   const [copiedText, copy] = useCopyToClipboard();
 
   useEffect(() => {
@@ -29,14 +29,10 @@ export default function ContactDialog({ data }: ContactDialogProps) {
 
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <button className="w-fit cursor-pointer rounded-xs bg-stone-900 px-4 py-2 text-[11px] font-medium tracking-widest uppercase decoration-cyan-500/70 decoration-2 underline-offset-4 hover:underline max-[430px]:tracking-wide sm:text-xs">
-          Contato
-        </button>
-      </DialogTrigger>
+      <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm">
         <DialogHeader>
-          <DialogTitle className="text-base font-bold">
+          <DialogTitle className="font-serif text-3xl">
             Informações de contato
           </DialogTitle>
         </DialogHeader>
@@ -44,37 +40,34 @@ export default function ContactDialog({ data }: ContactDialogProps) {
           <div className="flex items-center gap-2">
             <p className="w-full">{data.email}</p>
             <div className="flex gap-2">
-              <Button
-                size="sm"
-                variant={"secondary"}
+              <button
+                className="flex cursor-pointer items-center gap-2 rounded-xs px-2 py-1 font-mono text-[10px] tracking-wider whitespace-nowrap uppercase duration-150 hover:bg-sky-900 [&_svg]:size-3"
                 onClick={() => copy(data.email || "")}
               >
                 Copiar email <ClipboardIcon />
-              </Button>
+              </button>
             </div>
           </div>
           <div className="flex items-center gap-2">
             <p className="w-full">{data.phone}</p>
             <div className="flex gap-2">
-              <Button
-                size="sm"
-                variant={"secondary"}
+              <button
+                className="flex cursor-pointer items-center gap-2 rounded-xs px-2 py-1 font-mono text-[10px] tracking-wider whitespace-nowrap uppercase duration-150 hover:bg-sky-900 [&_svg]:size-3"
                 onClick={() => copy(data.phone || "")}
               >
                 Copiar telefone <ClipboardIcon />
-              </Button>
+              </button>
             </div>
           </div>
           <div className="flex items-center gap-2">
             <p className="w-full">https://www.valentinadenuzzo.com.br</p>
             <div className="flex gap-2">
-              <Button
-                size="sm"
-                variant={"secondary"}
+              <button
+                className="flex cursor-pointer items-center gap-2 rounded-xs px-2 py-1 font-mono text-[10px] tracking-wider whitespace-nowrap uppercase duration-150 hover:bg-sky-900 [&_svg]:size-3"
                 onClick={() => copy("https://www.valentinadenuzzo.com.br")}
               >
                 Copiar site <ClipboardIcon />
-              </Button>
+              </button>
             </div>
           </div>
         </div>
