@@ -11,7 +11,7 @@ export default async function Nav(props: NavProps) {
   const home = await payload.findGlobal({ slug: "blogInfo" });
   return (
     <nav className="fixed top-2 left-2 z-99 max-[390px]:top-1 max-[390px]:left-1 sm:top-3 sm:left-3">
-      <div className="rounded-sm bg-sky-950/30 px-3 py-1.5 backdrop-blur-sm hover:bg-stone-950 max-[390px]:px-2">
+      <div className="rounded-sm bg-sky-950/30 px-3 py-1.5 backdrop-blur-sm hover:bg-sky-950/60 max-[390px]:px-2">
         <div className="flex items-center gap-2 max-[390px]:gap-1 sm:gap-3 md:gap-4">
           <div className="flex flex-col">
             <Link
