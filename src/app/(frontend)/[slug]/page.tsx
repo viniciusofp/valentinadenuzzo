@@ -100,7 +100,7 @@ export default async function BlogPost({
   const createdAt = new Date(work.createdAt);
   const updatedAt = new Date(work.updatedAt);
   return (
-    <div className="pt-16 lg:pt-0">
+    <div className="">
       <RefreshRouteOnSave />
       {preview ? <PreviewAlert /> : null}
       {work.videoUrl ? (
@@ -162,7 +162,7 @@ export default async function BlogPost({
           <Frames frames={work.frames as Media[]} />
         ) : null}
       </div>
-      <About />
+      {/* <About /> */}
     </div>
   );
 }

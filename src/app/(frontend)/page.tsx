@@ -71,8 +71,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           loop
         />
       </div>
-      <About />
-      <div id="filmes" className="grid gap-4 gap-y-8 p-4 md:grid-cols-2">
+      {/* <About /> */}
+      <div id="filmes" className="grid gap-4 p-4 md:grid-cols-2">
         {docs.map((doc) => {
           return <WorkItem key={doc.id} work={doc} />;
         })}
