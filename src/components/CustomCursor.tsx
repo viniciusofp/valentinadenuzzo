@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { MoveHorizontal, MoveRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export const CustomCursor = ({ className }: { className: string }) => {
@@ -24,6 +23,7 @@ export const CustomCursor = ({ className }: { className: string }) => {
         className,
       )}
     >
+      <div></div>
       <p className="font-mono text-[10px] tracking-widest uppercase">
         Saiba Mais
       </p>
