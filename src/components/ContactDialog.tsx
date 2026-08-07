@@ -60,7 +60,7 @@ export default function ContactDialog({ data, children }: ContactDialogProps) {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <p className="w-full">https://www.valentinadenuzzo.com.br</p>
+            <p className="w-full">valentinadenuzzo.com.br</p>
             <div className="flex gap-2">
               <button
                 className="flex cursor-pointer items-center gap-2 rounded-xs px-2 py-1 font-mono text-[10px] tracking-wider whitespace-nowrap uppercase duration-150 hover:bg-sky-900 [&_svg]:size-3"

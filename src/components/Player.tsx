@@ -12,7 +12,6 @@ export default function Player({ videoUrl }: PlayerProps) {
       ref={playerRef}
       src={videoUrl}
       autoPlay
-      muted={true}
       className="h-full w-full object-cover"
       width={"100%"}
       height={"100%"}
@@ -24,7 +23,6 @@ export default function Player({ videoUrl }: PlayerProps) {
       config={{
         vimeo: {
           // @ts-ignore
-          muted: true,
         },
       }}
     />
