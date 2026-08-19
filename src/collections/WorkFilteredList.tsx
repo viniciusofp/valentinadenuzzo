@@ -1,13 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import WorkItem from "@/components/WorkItem";
 import { cn } from "@/lib/utils";
 import { Category, Work } from "@/payload-types";
