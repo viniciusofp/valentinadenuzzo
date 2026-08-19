@@ -5,7 +5,7 @@ import Frames from "@/components/Frames";
 import Player from "@/components/Player";
 import PreviewAlert from "@/components/PreviewAlert";
 import { RefreshRouteOnSave } from "@/components/RefreshRouteOnSave";
-import { Media, Work } from "@/payload-types";
+import { Category, Media, Work } from "@/payload-types";
 import config from "@/payload.config";
 import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 import { convertLexicalToPlaintext } from "@payloadcms/richtext-lexical/plaintext";
@@ -109,47 +109,47 @@ export default async function BlogPost({
         </div>
       ) : null}
       <div className="mx-auto w-full max-w-3xl px-4">
-        <h1 className="my-4 font-serif text-3xl sm:text-4xl md:my-6 md:text-5xl">
+        <h1 className="my-4 font-serif text-3xl sm:text-4xl md:my-8 md:text-5xl">
           {work.title}
         </h1>
         {work.metadata ? (
           <div className="meta flex flex-col flex-wrap gap-y-3 sm:grid sm:grid-cols-2 lg:flex lg:flex-row lg:gap-x-12">
             {work.metadata.year ? (
               <div className="">
-                <p className="mb-px font-serif text-sm tracking-widest text-stone-500 uppercase">
-                  Ano
+                <p className="mb-px font-mono text-xs tracking-widest text-stone-400 uppercase">
+                  Year
                 </p>
-                <p className="text-xs tracking-wider uppercase">
+                <p className="font-mono text-xs tracking-widest uppercase">
                   {work.metadata?.year}
                 </p>
               </div>
             ) : null}
             {work.metadata.client ? (
               <div className="">
-                <p className="mb-px font-serif text-sm tracking-widest text-stone-500 uppercase">
-                  Cliente
+                <p className="mb-px font-mono text-xs tracking-widest text-stone-400 uppercase">
+                  Client
                 </p>
-                <p className="text-xs tracking-wider uppercase">
+                <p className="font-mono text-xs tracking-widest uppercase">
                   {work.metadata?.client}
                 </p>
               </div>
             ) : null}
             {work.metadata.type ? (
               <div className="">
-                <p className="mb-px font-serif text-sm tracking-widest text-stone-500 uppercase">
-                  Tipo de produção
+                <p className="mb-px font-mono text-xs tracking-widest text-stone-400 uppercase">
+                  Category
                 </p>
-                <p className="text-xs tracking-wider uppercase">
-                  {work.metadata?.type}
+                <p className="font-mono text-xs tracking-widest uppercase">
+                  {(work.metadata?.type as Category)?.name}
                 </p>
               </div>
             ) : null}
             {work.metadata.role ? (
               <div className="">
-                <p className="mb-px font-serif text-sm tracking-widest text-stone-500 uppercase">
-                  Atividade
+                <p className="mb-px font-mono text-xs tracking-widest text-stone-400 uppercase">
+                  Role
                 </p>
-                <p className="text-xs tracking-wider uppercase">
+                <p className="font-mono text-xs tracking-widest uppercase">
                   {work.metadata?.role}
                 </p>
               </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Media, Work } from "@/payload-types";
+import { Category, Media, Work } from "@/payload-types";
 import { workAsyncStorage } from "next/dist/server/app-render/work-async-storage.external";
 import Link from "next/link";
 import { CustomCursor } from "./CustomCursor";
@@ -10,6 +10,7 @@ import { useRef, useState } from "react";
 import ReactPlayer from "react-player";
 import { PlayerEntry } from "react-player/players";
 import { DivideCircle } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 
 export type WorkItemProps = { work: Work };
 
@@ -39,16 +40,16 @@ export default function WorkItem({ work }: WorkItemProps) {
     setDuration((playerRef.current as HTMLMediaElement).duration);
   };
   return (
-    <Link href={`/${work.slug}`} className="relative grid gap-2">
-      <div className="group block w-full **:duration-300">
+    <Link href={`/${work.slug}`} className="group relative grid">
+      <div className="relative block w-full **:duration-300">
         <div
-          className="group relative aspect-video w-full overflow-hidden"
+          className="group relative aspect-video w-full overflow-hidden rounded-xs shadow-xl"
           onMouseEnter={play}
-          onMouseLeave={pause}
+          // onMouseLeave={pause}
           onPointerDown={play}
-          onPointerUp={pause}
+          // onPointerUp={pause}
           onTouchStart={play}
-          onTouchEnd={pause}
+          // onTouchEnd={pause}
         >
           {isPlaying && !isNaN(duration) ? (
             <div className="absolute bottom-2 left-1 z-7 font-mono text-[10px] tracking-wider text-shadow-xs">
@@ -77,6 +78,20 @@ export default function WorkItem({ work }: WorkItemProps) {
                   : Math.floor(Math.round(duration) % 60)}
             </div>
           ) : null}
+          {/* <AnimatePresence>
+            {!isPlaying || isNaN(duration) ? (
+              <motion.img
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+                src={thumb.sizes?.half?.url || thumb.url || ""}
+                alt=""
+                className="z-3 h-full w-full object-cover object-center"
+              />
+            ) : null}
+          </AnimatePresence> */}
+
           {isPlaying && !isNaN(duration) ? (
             <div className="absolute bottom-0 left-0 z-7 h-1 w-full bg-stone-800">
               <div
@@ -106,19 +121,18 @@ export default function WorkItem({ work }: WorkItemProps) {
               },
             }}
           />
-          {/* <img
-          src={thumb.sizes?.half?.url || thumb.url || ""}
-          alt=""
-          className="h-full w-full object-cover object-center group-hover:scale-105"
-        /> */}
         </div>
       </div>
+      <div className="mt-4">
+        <h2 className="text-center font-mono font-bold uppercase">
+          {work.title}
+        </h2>
+        <p className="text-center font-mono text-[10px] tracking-wider uppercase opacity-60">
+          {(work.metadata?.type as Category)?.name} - {work.metadata?.year}
+        </p>
+      </div>
 
-      <h2 className="font-serif text-2xl font-medium sm:text-2xl md:text-3xl">
-        {work.title}
-      </h2>
-
-      <CustomCursor className={cn("hidden group-hover:flex")} />
+      <CustomCursor className={cn("z-9 hidden group-hover:flex")} />
     </Link>
   );
 }

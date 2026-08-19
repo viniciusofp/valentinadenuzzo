@@ -141,8 +141,9 @@ export const Works: CollectionConfig = {
             },
             {
               name: "type",
-              label: "Tipo de Produção",
-              type: "text",
+              label: "Categoria",
+              type: "relationship",
+              relationTo: "categories",
               admin: {
                 description: "Ex.: curta-metragem, longa-metragem, etc...",
               },

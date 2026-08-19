@@ -31,7 +31,7 @@ const Frame = ({ frame }: { frame: any }) => {
     <motion.div
       ref={ref}
       style={{ opacity, scale }}
-      className="my-[10vh] flex w-full items-center justify-center"
+      className="my-[10vh] flex w-full items-center justify-center backdrop-blur-lg"
     >
       <img
         src={

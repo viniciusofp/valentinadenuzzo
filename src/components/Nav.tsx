@@ -13,12 +13,12 @@ export default async function Nav(props: NavProps) {
   return (
     <>
       <nav className="fixed top-2 left-2 z-50 w-[calc(100svw-2rem)] max-[390px]:top-1 max-[390px]:left-1 sm:top-3 sm:left-3 sm:w-auto">
-        <div className="rounded-sm bg-stone-950/5 px-3 py-0.5 backdrop-blur-sm hover:bg-stone-950/60 max-[390px]:px-2">
+        <div className="mx-auto rounded-sm bg-stone-950/5 px-3 py-0.5 backdrop-blur-sm hover:bg-stone-950/60 max-[390px]:px-2">
           <div className="flex items-center justify-between gap-2 max-[390px]:gap-1 sm:justify-start sm:gap-3 md:gap-4">
             <div className="flex flex-col">
               <Link
                 href="/"
-                className="font-serif text-xl font-medium tracking-wider uppercase md:text-2xl xl:text-3xl"
+                className="font-serif text-xl font-medium tracking-wider uppercase md:text-2xl"
               >
                 {home.name}{" "}
               </Link>

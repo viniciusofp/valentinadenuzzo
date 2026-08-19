@@ -30,9 +30,9 @@ export default function ContactDialog({ data, children }: ContactDialogProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm">
+      <DialogContent className="bg-stone-950">
         <DialogHeader>
-          <DialogTitle className="font-serif text-3xl">
+          <DialogTitle className="font-mono text-xl font-bold uppercase">
             Informações de contato
           </DialogTitle>
         </DialogHeader>

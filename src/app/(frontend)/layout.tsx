@@ -24,6 +24,7 @@ const serif = Parastoo({
   subsets: ["latin"],
   weight: "variable",
   variable: "--font-serif",
+  fallback: [],
 });
 const mono = Chivo_Mono({
   subsets: ["latin"],
@@ -40,8 +41,8 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       className={`${sans.variable} ${serif.variable} ${mono.variable}`}
     >
       <body
-        className="dark bg-contain bg-fixed font-sans antialiased"
-        style={{ backgroundImage: `url('${BG.src}')` }}
+        className="dark bg-cover bg-fixed font-sans antialiased"
+        style={{ backgroundImage: `url('/014.jpg')` }}
       >
         <TooltipProvider>
           <Nav />

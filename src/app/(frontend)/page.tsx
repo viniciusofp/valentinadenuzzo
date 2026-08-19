@@ -8,6 +8,7 @@ import WorkItem from "@/components/WorkItem";
 import { Media } from "@/payload-types";
 import { Metadata } from "next";
 import ReactPlayer from "react-player";
+import WorkFilteredList from "@/collections/WorkFilteredList";
 
 export type BlogPageProps = {
   searchParams: Promise<{ page: string; preview: string }>;
@@ -50,14 +51,20 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     depth: 2,
     draft: user && Boolean(preview) ? true : false,
   });
+  const { docs: categories } = await payload.find({
+    collection: "categories",
+    limit: 100,
+  });
 
   const home = await payload.findGlobal({ slug: "blogInfo" });
 
   return (
     <>
-      <div className="relative aspect-video max-h-svh min-h-72 w-full">
+      <div className="relative aspect-video max-h-[40svh] w-full mix-blend-lighten">
+        <div className="absolute bottom-0 left-0 z-2 h-40 max-h-[40svh] w-full bg-linear-to-t from-black to-transparent"></div>
         <ReactPlayer
           src={(home.reel as Media).url || ""}
+          // src="https://vimeo.com/1104598642"
           autoPlay
           className="h-full w-full object-cover"
           width={"100%"}
@@ -72,11 +79,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         />
       </div>
       {/* <About /> */}
-      <div id="filmes" className="grid gap-4 p-4 md:grid-cols-2">
-        {docs.map((doc) => {
-          return <WorkItem key={doc.id} work={doc} />;
-        })}
-      </div>
+      <WorkFilteredList works={docs} categories={categories} />
     </>
   );
 }

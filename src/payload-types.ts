@@ -161,7 +161,7 @@ export interface Work {
     /**
      * Ex.: curta-metragem, longa-metragem, etc...
      */
-    type?: string | null;
+    type?: (string | null) | Category;
   };
   updatedAt: string;
   createdAt: string;
