@@ -85,7 +85,6 @@ export const Works: CollectionConfig = {
       name: "content",
       label: "Conteúdo",
       type: "richText",
-      required: true,
       editor: lexicalEditor({
         features: ({ rootFeatures }) => [
           ...rootFeatures,

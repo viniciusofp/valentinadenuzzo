@@ -135,7 +135,7 @@ export interface Work {
   title: string;
   slug: string;
   videoUrl?: string | null;
-  content: {
+  content?: {
     root: {
       type: string;
       children: {
@@ -149,7 +149,7 @@ export interface Work {
       version: number;
     };
     [k: string]: unknown;
-  };
+  } | null;
   frames?: (string | Media)[] | null;
   metadata?: {
     year?: number | null;

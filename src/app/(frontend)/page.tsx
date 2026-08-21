@@ -60,7 +60,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
   return (
     <>
-      <div className="relative aspect-video max-h-[40svh] w-full mix-blend-lighten">
+      <div className="relative aspect-video max-h-[60svh] w-full mix-blend-lighten">
         <div className="absolute bottom-0 left-0 z-2 h-40 max-h-[40svh] w-full bg-linear-to-t from-black to-transparent"></div>
         <ReactPlayer
           src={(home.reel as Media).url || ""}

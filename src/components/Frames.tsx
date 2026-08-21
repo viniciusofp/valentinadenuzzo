@@ -38,6 +38,7 @@ const Frame = ({ frame }: { frame: any }) => {
           ((frame as Media).sizes?.full?.url as string) ||
           ((frame as Media).url as string)
         }
+        alt={(frame as Media).alt}
         className=""
       />
     </motion.div>

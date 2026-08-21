@@ -157,7 +157,7 @@ export default async function BlogPost({
           </div>
         ) : null}
 
-        <ExpandableContent content={work.content} />
+        {work.content ? <ExpandableContent content={work.content} /> : null}
         {work.frames && work.frames.length > 0 ? (
           <Frames frames={work.frames as Media[]} />
         ) : null}
