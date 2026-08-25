@@ -30,7 +30,7 @@ export default function ContactDialog({ data, children }: ContactDialogProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="bg-stone-950">
+      <DialogContent className="">
         <DialogHeader>
           <DialogTitle className="font-mono text-xl font-bold uppercase">
             Informações de contato

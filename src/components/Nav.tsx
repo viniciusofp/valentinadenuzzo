@@ -13,7 +13,7 @@ export default async function Nav(props: NavProps) {
   return (
     <>
       <nav className="fixed top-2 left-2 z-50 w-[calc(100svw-2rem)] max-[390px]:top-1 max-[390px]:left-1 sm:top-3 sm:left-3 sm:w-auto">
-        <div className="mx-auto rounded-sm px-3 py-0.5 hover:bg-white/60 hover:backdrop-blur-sm max-[390px]:px-2">
+        <div className="mx-auto rounded-sm px-3 py-0.5 hover:bg-white/80 hover:backdrop-blur-sm max-[390px]:px-2">
           <div className="flex items-center justify-between gap-2 max-[390px]:gap-1 sm:justify-start sm:gap-3 md:gap-4">
             <div className="flex flex-col">
               <Link
@@ -38,19 +38,19 @@ export default async function Nav(props: NavProps) {
             <div className="hidden items-center gap-1 max-[390px]:gap-0 sm:flex">
               <Link
                 href="/#filmes"
-                className="rounded-xs px-2 py-2 font-mono text-[10px] tracking-widest uppercase duration-150 hover:bg-sky-900 max-[390px]:px-1.5 sm:px-3"
+                className="rounded-xs px-2 py-2 font-mono text-[10px] tracking-widest uppercase duration-150 hover:bg-sky-200 max-[390px]:px-1.5 sm:px-3"
               >
                 Films
               </Link>
 
-              <p className="rounded-xs px-2 py-2 font-mono text-[10px] tracking-widest uppercase duration-150 hover:bg-sky-900 max-[390px]:px-1.5 sm:px-3">
+              <p className="rounded-xs px-2 py-2 font-mono text-[10px] tracking-widest uppercase duration-150 hover:bg-sky-200 max-[390px]:px-1.5 sm:px-3">
                 Still Photograpy
               </p>
-              <p className="rounded-xs px-2 py-2 font-mono text-[10px] tracking-widest uppercase duration-150 hover:bg-sky-900 max-[390px]:px-1.5 sm:px-3">
+              <p className="rounded-xs px-2 py-2 font-mono text-[10px] tracking-widest uppercase duration-150 hover:bg-sky-200 max-[390px]:px-1.5 sm:px-3">
                 About
               </p>
               <ContactDialog data={home}>
-                <button className="cursor-pointer rounded-xs px-2 py-2 font-mono text-[10px] tracking-widest uppercase duration-150 hover:bg-sky-900 max-[390px]:px-1.5 sm:px-3">
+                <button className="cursor-pointer rounded-xs px-2 py-2 font-mono text-[10px] tracking-widest uppercase duration-150 hover:bg-sky-200 max-[390px]:px-1.5 sm:px-3">
                   Contact
                 </button>
               </ContactDialog>

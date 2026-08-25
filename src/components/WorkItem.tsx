@@ -45,11 +45,11 @@ export default function WorkItem({ work }: WorkItemProps) {
         <div
           className="group relative aspect-video w-full overflow-hidden rounded-xs shadow-xl/20"
           onMouseEnter={play}
-          // onMouseLeave={pause}
+          onMouseLeave={pause}
           onPointerDown={play}
-          // onPointerUp={pause}
+          onPointerUp={pause}
           onTouchStart={play}
-          // onTouchEnd={pause}
+          onTouchEnd={pause}
         >
           {isPlaying && !isNaN(duration) ? (
             <div className="absolute bottom-2 left-1 z-7 font-mono text-[10px] tracking-wider text-shadow-xs">
