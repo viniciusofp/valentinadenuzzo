@@ -21,7 +21,7 @@ export default function ExpandableContent({ content }: ExpandableContentProps) {
       >
         <button
           className={cn(
-            "absolute bottom-0 left-0 z-3 flex w-full cursor-pointer items-center justify-center gap-2 rounded-xs bg-stone-950 px-6 py-2 font-mono text-xs tracking-widest uppercase duration-300 hover:bg-sky-950",
+            "absolute bottom-0 left-0 z-3 flex w-full cursor-pointer items-center justify-center gap-2 rounded-xs bg-white px-6 py-2 font-mono text-xs tracking-widest uppercase duration-300 hover:bg-sky-100",
             !show && "h-full",
           )}
           onClick={() => setShow((prev) => !prev)}
@@ -38,7 +38,7 @@ export default function ExpandableContent({ content }: ExpandableContentProps) {
         </button>
         <div
           className={cn(
-            "pointer-events-none absolute bottom-0 left-0 z-2 h-full w-full bg-linear-to-t from-black to-black/0",
+            "pointer-events-none absolute bottom-0 left-0 z-2 h-full w-full bg-linear-to-t from-white to-black/0",
             show && "opacity-0",
           )}
         ></div>

@@ -41,8 +41,8 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       className={`${sans.variable} ${serif.variable} ${mono.variable}`}
     >
       <body
-        className="dark bg-size-[120vw_100vh] bg-fixed font-sans antialiased"
-        style={{ backgroundImage: `url('/014.jpg')` }}
+        className="bg-size-[120vw_100vh] bg-fixed font-sans antialiased"
+        // style={{ backgroundImage: `url('/bg.jpg')` }}
       >
         <TooltipProvider>
           <Nav />

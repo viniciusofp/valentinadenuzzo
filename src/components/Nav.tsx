@@ -13,7 +13,7 @@ export default async function Nav(props: NavProps) {
   return (
     <>
       <nav className="fixed top-2 left-2 z-50 w-[calc(100svw-2rem)] max-[390px]:top-1 max-[390px]:left-1 sm:top-3 sm:left-3 sm:w-auto">
-        <div className="mx-auto rounded-sm bg-stone-950/5 px-3 py-0.5 backdrop-blur-sm hover:bg-stone-950/60 max-[390px]:px-2">
+        <div className="mx-auto rounded-sm px-3 py-0.5 hover:bg-white/60 hover:backdrop-blur-sm max-[390px]:px-2">
           <div className="flex items-center justify-between gap-2 max-[390px]:gap-1 sm:justify-start sm:gap-3 md:gap-4">
             <div className="flex flex-col">
               <Link
@@ -58,7 +58,7 @@ export default async function Nav(props: NavProps) {
           </div>
         </div>
       </nav>
-      <div className="flex h-12 w-full items-end bg-black px-4 py-2 font-serif text-base tracking-widest text-stone-400 uppercase max-[390px]:h-11 sm:h-15">
+      <div className="bg-background flex h-12 w-full items-end px-4 py-2 font-serif text-base tracking-widest text-stone-400 uppercase max-[390px]:h-11 sm:h-15">
         {/* {home.description} */}
       </div>
     </>

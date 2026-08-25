@@ -23,10 +23,10 @@ const Frame = ({ frame }: { frame: any }) => {
   });
   const scale = useTransform(
     scrollYProgress,
-    [0, 0.3, 0.7, 1],
-    [0.9, 1, 1, 0.9],
+    [0, 0.25, 0.75, 1],
+    [0.95, 1, 1, 0.95],
   );
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
   return (
     <motion.div
       ref={ref}
