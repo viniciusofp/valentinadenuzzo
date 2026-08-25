@@ -43,7 +43,7 @@ export default function WorkItem({ work }: WorkItemProps) {
     <Link href={`/${work.slug}`} className="group relative grid">
       <div className="relative block w-full **:duration-300">
         <div
-          className="group relative aspect-video w-full overflow-hidden rounded-xs shadow-xl"
+          className="group relative aspect-video w-full overflow-hidden rounded-xs shadow-xl/20"
           onMouseEnter={play}
           // onMouseLeave={pause}
           onPointerDown={play}

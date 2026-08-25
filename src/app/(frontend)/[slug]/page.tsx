@@ -12,7 +12,6 @@ import { convertLexicalToPlaintext } from "@payloadcms/richtext-lexical/plaintex
 import { Metadata, ResolvingMetadata } from "next";
 import { headers as getHeaders } from "next/headers";
 import Link from "next/link";
-import About from "@/components/About";
 
 export type BlogPostProps = {
   params: Promise<{ slug: string }>;
