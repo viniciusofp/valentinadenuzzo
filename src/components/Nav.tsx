@@ -3,6 +3,16 @@ import Link from "next/link";
 import { getPayload } from "payload";
 import ContactDialog from "./ContactDialog";
 import { MenuIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export type NavProps = {};
 
@@ -12,8 +22,8 @@ export default async function Nav(props: NavProps) {
   const home = await payload.findGlobal({ slug: "blogInfo" });
   return (
     <>
-      <nav className="fixed top-2 left-2 z-50 w-[calc(100svw-2rem)] max-[390px]:top-1 max-[390px]:left-1 sm:top-3 sm:left-3 sm:w-auto">
-        <div className="mx-auto rounded-sm px-3 py-0.5 hover:bg-white/80 hover:backdrop-blur-sm max-[390px]:px-2">
+      <nav className="fixed top-2 left-0 z-100 w-[calc(100svw-2rem)] text-white mix-blend-exclusion max-[390px]:top-1 sm:top-3 sm:w-auto">
+        <div className="mx-auto rounded-sm px-4 py-0.5 lg:px-6 xl:px-8 2xl:px-10">
           <div className="flex items-center justify-between gap-2 max-[390px]:gap-1 sm:justify-start sm:gap-3 md:gap-4">
             <div className="flex flex-col">
               <Link
@@ -28,29 +38,65 @@ export default async function Nav(props: NavProps) {
             </p>
           ) : null} */}
             </div>
-            <div className="h-2 w-px bg-sky-200/20"></div>
+            <div className="h-2 w-px bg-sky-800/20"></div>
             {/* <span className="font-serif text-sm leading-none tracking-wider text-stone-400 uppercase md:text-base">
           {home.description}
         </span> */}
-            <div className="sm:hidden">
-              <MenuIcon className="size-6" />
+            <div className="flex items-center gap-1 sm:hidden">
+              <ContactDialog data={home}>
+                <button className="cursor-pointer rounded-xs px-2 py-2 font-mono text-[10px] tracking-widest uppercase duration-150 hover:bg-sky-100/10 max-[390px]:px-1.5 sm:px-3">
+                  Contact
+                </button>
+              </ContactDialog>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="cursor-pointer p-1 hover:bg-sky-100/10">
+                    <MenuIcon className="size-5" />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuGroup className="font-mono">
+                    <Link href="/#filmes">
+                      <DropdownMenuItem className="text-[10px] uppercase">
+                        Films
+                      </DropdownMenuItem>
+                    </Link>
+                    <Link href="/still-photography">
+                      <DropdownMenuItem className="text-[10px] uppercase">
+                        Still Photography
+                      </DropdownMenuItem>
+                    </Link>
+                    <Link href="/about">
+                      <DropdownMenuItem className="text-[10px] uppercase">
+                        About
+                      </DropdownMenuItem>
+                    </Link>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
             <div className="hidden items-center gap-1 max-[390px]:gap-0 sm:flex">
               <Link
                 href="/#filmes"
-                className="rounded-xs px-2 py-2 font-mono text-[10px] tracking-widest uppercase duration-150 hover:bg-sky-200 max-[390px]:px-1.5 sm:px-3"
+                className="rounded-xs px-2 py-2 font-mono text-[10px] tracking-widest uppercase duration-150 hover:bg-sky-100/10 max-[390px]:px-1.5 sm:px-3"
               >
                 Films
               </Link>
 
-              <p className="rounded-xs px-2 py-2 font-mono text-[10px] tracking-widest uppercase duration-150 hover:bg-sky-200 max-[390px]:px-1.5 sm:px-3">
-                Still Photograpy
-              </p>
-              <p className="rounded-xs px-2 py-2 font-mono text-[10px] tracking-widest uppercase duration-150 hover:bg-sky-200 max-[390px]:px-1.5 sm:px-3">
+              <Link
+                href="/still-photography"
+                className="rounded-xs px-2 py-2 font-mono text-[10px] tracking-widest uppercase duration-150 hover:bg-sky-100/10 max-[390px]:px-1.5 sm:px-3"
+              >
+                Still Photography
+              </Link>
+              <Link
+                href="/about"
+                className="rounded-xs px-2 py-2 font-mono text-[10px] tracking-widest uppercase duration-150 hover:bg-sky-100/10 max-[390px]:px-1.5 sm:px-3"
+              >
                 About
-              </p>
+              </Link>
               <ContactDialog data={home}>
-                <button className="cursor-pointer rounded-xs px-2 py-2 font-mono text-[10px] tracking-widest uppercase duration-150 hover:bg-sky-200 max-[390px]:px-1.5 sm:px-3">
+                <button className="cursor-pointer rounded-xs px-2 py-2 font-mono text-[10px] tracking-widest uppercase duration-150 hover:bg-sky-100/10 max-[390px]:px-1.5 sm:px-3">
                   Contact
                 </button>
               </ContactDialog>

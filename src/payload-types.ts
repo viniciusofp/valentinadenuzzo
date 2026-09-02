@@ -93,9 +93,11 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     blogInfo: BlogInfo;
+    stillPhotography: StillPhotography;
   };
   globalsSelect: {
     blogInfo: BlogInfoSelect<false> | BlogInfoSelect<true>;
+    stillPhotography: StillPhotographySelect<false> | StillPhotographySelect<true>;
   };
   locale: null;
   widgets: {
@@ -546,6 +548,16 @@ export interface BlogInfo {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "stillPhotography".
+ */
+export interface StillPhotography {
+  id: string;
+  stills?: (string | Media)[] | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "blogInfo_select".
  */
 export interface BlogInfoSelect<T extends boolean = true> {
@@ -555,6 +567,16 @@ export interface BlogInfoSelect<T extends boolean = true> {
   reel?: T;
   email?: T;
   phone?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "stillPhotography_select".
+ */
+export interface StillPhotographySelect<T extends boolean = true> {
+  stills?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

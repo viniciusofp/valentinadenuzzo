@@ -108,7 +108,7 @@ export default async function BlogPost({
         </div>
       ) : null}
       <div className="mx-auto w-full max-w-3xl px-4">
-        <h1 className="my-4 font-serif text-3xl sm:text-4xl md:my-8 md:text-5xl">
+        <h1 className="my-4 font-serif text-3xl font-medium sm:text-4xl md:my-8 md:text-5xl lg:text-6xl">
           {work.title}
         </h1>
         {work.metadata ? (

@@ -27,9 +27,13 @@ export default function WorkFilteredList({
   };
   return (
     <section id="filmes" className="grid w-full gap-8 pt-4">
-      <div className="filters flex w-full max-w-full scrollbar-none justify-center gap-2 overflow-x-scroll">
+      <div className="filters flex w-full max-w-full scrollbar-none justify-center gap-2 overflow-x-scroll **:duration-300">
         <Button
-          className={cn(selected === null && "bg-sky-700 text-white")}
+          className={cn(
+            "hover:bg-sky-100",
+            selected === null &&
+              "bg-sky-700 text-white hover:bg-sky-100/10 hover:text-sky-700",
+          )}
           onClick={() => filterWorks(null)}
         >
           All
@@ -38,7 +42,11 @@ export default function WorkFilteredList({
           return (
             <Button
               key={cat.id}
-              className={cn(selected === cat.slug && "bg-sky-700 text-white")}
+              className={cn(
+                "hover:bg-sky-100",
+                selected === cat.slug &&
+                  "bg-sky-700 text-white hover:bg-sky-100/10 hover:text-sky-700",
+              )}
               onClick={() => filterWorks(cat.slug)}
             >
               {cat.name}
@@ -46,7 +54,7 @@ export default function WorkFilteredList({
           );
         })}
       </div>
-      <div className="container mx-auto grid w-full gap-x-12 gap-y-24 p-4 lg:grid-cols-2">
+      <div className="mx-auto grid w-full gap-x-12 gap-y-24 p-4 lg:grid-cols-2 lg:px-6 xl:px-8 2xl:px-10">
         {filteredWorks.map((work) => {
           return <WorkItem key={work.id} work={work} />;
         })}

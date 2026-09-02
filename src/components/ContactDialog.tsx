@@ -32,7 +32,7 @@ export default function ContactDialog({ data, children }: ContactDialogProps) {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="">
         <DialogHeader>
-          <DialogTitle className="font-mono text-xl font-bold uppercase">
+          <DialogTitle className="font-mono font-bold uppercase">
             Informações de contato
           </DialogTitle>
         </DialogHeader>
@@ -41,7 +41,7 @@ export default function ContactDialog({ data, children }: ContactDialogProps) {
             <p className="w-full">{data.email}</p>
             <div className="flex gap-2">
               <button
-                className="flex cursor-pointer items-center gap-2 rounded-xs px-2 py-1 font-mono text-[10px] tracking-wider whitespace-nowrap uppercase duration-150 hover:bg-sky-900 [&_svg]:size-3"
+                className="flex cursor-pointer items-center gap-2 rounded-xs px-2 py-1 font-mono text-[10px] tracking-wider whitespace-nowrap uppercase duration-150 hover:bg-sky-100/10 [&_svg]:size-3"
                 onClick={() => copy(data.email || "")}
               >
                 Copiar email <ClipboardIcon />
@@ -52,7 +52,7 @@ export default function ContactDialog({ data, children }: ContactDialogProps) {
             <p className="w-full">{data.phone}</p>
             <div className="flex gap-2">
               <button
-                className="flex cursor-pointer items-center gap-2 rounded-xs px-2 py-1 font-mono text-[10px] tracking-wider whitespace-nowrap uppercase duration-150 hover:bg-sky-900 [&_svg]:size-3"
+                className="flex cursor-pointer items-center gap-2 rounded-xs px-2 py-1 font-mono text-[10px] tracking-wider whitespace-nowrap uppercase duration-150 hover:bg-sky-100/10 [&_svg]:size-3"
                 onClick={() => copy(data.phone || "")}
               >
                 Copiar telefone <ClipboardIcon />
@@ -63,7 +63,7 @@ export default function ContactDialog({ data, children }: ContactDialogProps) {
             <p className="w-full">valentinadenuzzo.com.br</p>
             <div className="flex gap-2">
               <button
-                className="flex cursor-pointer items-center gap-2 rounded-xs px-2 py-1 font-mono text-[10px] tracking-wider whitespace-nowrap uppercase duration-150 hover:bg-sky-900 [&_svg]:size-3"
+                className="flex cursor-pointer items-center gap-2 rounded-xs px-2 py-1 font-mono text-[10px] tracking-wider whitespace-nowrap uppercase duration-150 hover:bg-sky-100/10 [&_svg]:size-3"
                 onClick={() => copy("https://www.valentinadenuzzo.com.br")}
               >
                 Copiar site <ClipboardIcon />

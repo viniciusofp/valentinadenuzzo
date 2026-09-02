@@ -1,16 +1,12 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { Category, Media, Work } from "@/payload-types";
-import { workAsyncStorage } from "next/dist/server/app-render/work-async-storage.external";
 import Link from "next/link";
 import { CustomCursor } from "./CustomCursor";
-import { cn } from "@/lib/utils";
 
 import { useRef, useState } from "react";
 import ReactPlayer from "react-player";
-import { PlayerEntry } from "react-player/players";
-import { DivideCircle } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
 
 export type WorkItemProps = { work: Work };
 
@@ -49,35 +45,8 @@ export default function WorkItem({ work }: WorkItemProps) {
           onPointerDown={play}
           onPointerUp={pause}
           onTouchStart={play}
-          onTouchEnd={pause}
+          // onTouchEnd={pause}
         >
-          {isPlaying && !isNaN(duration) ? (
-            <div className="absolute bottom-2 left-1 z-7 font-mono text-[10px] tracking-wider text-shadow-xs">
-              {Math.floor(Math.round(currentTime) / 60) === 0
-                ? "00"
-                : Math.floor(Math.round(currentTime) / 60) < 10
-                  ? "0" + Math.floor(Math.round(currentTime) / 60)
-                  : Math.floor(Math.round(currentTime) / 60)}
-              :
-              {Math.floor(Math.round(currentTime) % 60) === 0
-                ? "00"
-                : Math.floor(Math.round(currentTime) % 60) < 10
-                  ? "0" + Math.floor(Math.round(currentTime) % 60)
-                  : Math.floor(Math.round(currentTime) % 60)}{" "}
-              /{" "}
-              {Math.floor(Math.round(duration) / 60) === 0
-                ? "00"
-                : Math.floor(Math.round(duration) / 60) < 10
-                  ? "0" + Math.floor(Math.round(duration) / 60)
-                  : Math.floor(Math.round(duration) / 60)}
-              :
-              {Math.floor(Math.round(duration) % 60) === 0
-                ? "00"
-                : Math.floor(Math.round(duration) % 60) < 10
-                  ? "0" + Math.floor(Math.round(duration) % 60)
-                  : Math.floor(Math.round(duration) % 60)}
-            </div>
-          ) : null}
           {/* <AnimatePresence>
             {!isPlaying || isNaN(duration) ? (
               <motion.img
@@ -122,6 +91,33 @@ export default function WorkItem({ work }: WorkItemProps) {
             }}
           />
         </div>
+        {isPlaying && !isNaN(duration) ? (
+          <div className="absolute right-0 -bottom-3.5 z-7 font-mono text-[8px] opacity-50 text-shadow-xs">
+            {Math.floor(Math.round(currentTime) / 60) === 0
+              ? "00"
+              : Math.floor(Math.round(currentTime) / 60) < 10
+                ? "0" + Math.floor(Math.round(currentTime) / 60)
+                : Math.floor(Math.round(currentTime) / 60)}
+            :
+            {Math.floor(Math.round(currentTime) % 60) === 0
+              ? "00"
+              : Math.floor(Math.round(currentTime) % 60) < 10
+                ? "0" + Math.floor(Math.round(currentTime) % 60)
+                : Math.floor(Math.round(currentTime) % 60)}{" "}
+            /{" "}
+            {Math.floor(Math.round(duration) / 60) === 0
+              ? "00"
+              : Math.floor(Math.round(duration) / 60) < 10
+                ? "0" + Math.floor(Math.round(duration) / 60)
+                : Math.floor(Math.round(duration) / 60)}
+            :
+            {Math.floor(Math.round(duration) % 60) === 0
+              ? "00"
+              : Math.floor(Math.round(duration) % 60) < 10
+                ? "0" + Math.floor(Math.round(duration) % 60)
+                : Math.floor(Math.round(duration) % 60)}
+          </div>
+        ) : null}
       </div>
       <div className="mt-4">
         <h2 className="text-center font-mono font-bold uppercase">

@@ -17,6 +17,7 @@ import { Categories } from "./collections/Categories";
 import { BlogInfo } from "./collections/BlogInfo";
 import { Media } from "./collections/Media";
 import { Works } from "./collections/Works";
+import { StillPhotography } from "./collections/Stills";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -48,7 +49,7 @@ export default buildConfig({
       ],
     },
   },
-  globals: [BlogInfo],
+  globals: [BlogInfo, StillPhotography],
   collections: [Works, Media, Categories, Users],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
