@@ -108,47 +108,47 @@ export default async function BlogPost({
         </div>
       ) : null}
       <div className="mx-auto w-full max-w-3xl px-4">
-        <h1 className="my-4 font-serif text-3xl font-medium sm:text-4xl md:my-8 md:text-5xl lg:text-6xl">
+        <h1 className="my-4 mb-6 font-serif text-3xl text-balance sm:text-4xl md:my-8 md:text-5xl">
           {work.title}
         </h1>
         {work.metadata ? (
           <div className="meta flex flex-col flex-wrap gap-y-3 sm:grid sm:grid-cols-2 lg:flex lg:flex-row lg:gap-x-12">
             {work.metadata.year ? (
               <div className="">
-                <p className="mb-px font-mono text-xs tracking-widest text-stone-400 uppercase">
+                <p className="mb-px font-mono text-[10px] tracking-wider text-stone-400 uppercase">
                   Year
                 </p>
-                <p className="font-mono text-xs tracking-widest uppercase">
+                <p className="font-mono text-xs tracking-wider uppercase">
                   {work.metadata?.year}
                 </p>
               </div>
             ) : null}
             {work.metadata.client ? (
               <div className="">
-                <p className="mb-px font-mono text-xs tracking-widest text-stone-400 uppercase">
+                <p className="mb-px font-mono text-[10px] tracking-wider text-stone-400 uppercase">
                   Client
                 </p>
-                <p className="font-mono text-xs tracking-widest uppercase">
+                <p className="font-mono text-xs tracking-wider uppercase">
                   {work.metadata?.client}
                 </p>
               </div>
             ) : null}
             {work.metadata.type ? (
               <div className="">
-                <p className="mb-px font-mono text-xs tracking-widest text-stone-400 uppercase">
+                <p className="mb-px font-mono text-[10px] tracking-wider text-stone-400 uppercase">
                   Category
                 </p>
-                <p className="font-mono text-xs tracking-widest uppercase">
+                <p className="font-mono text-xs tracking-wider uppercase">
                   {(work.metadata?.type as Category)?.name}
                 </p>
               </div>
             ) : null}
             {work.metadata.role ? (
               <div className="">
-                <p className="mb-px font-mono text-xs tracking-widest text-stone-400 uppercase">
+                <p className="mb-px font-mono text-[10px] tracking-wider text-stone-400 uppercase">
                   Role
                 </p>
-                <p className="font-mono text-xs tracking-widest uppercase">
+                <p className="font-mono text-xs tracking-wider uppercase">
                   {work.metadata?.role}
                 </p>
               </div>

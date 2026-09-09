@@ -22,9 +22,9 @@ export default async function Nav(props: NavProps) {
   const home = await payload.findGlobal({ slug: "blogInfo" });
   return (
     <>
-      <nav className="fixed top-2 left-0 z-100 w-[calc(100svw-2rem)] text-white mix-blend-exclusion max-[390px]:top-1 sm:top-3 sm:w-auto">
-        <div className="mx-auto rounded-sm px-4 py-0.5 lg:px-6 xl:px-8 2xl:px-10">
-          <div className="flex items-center justify-between gap-2 max-[390px]:gap-1 sm:justify-start sm:gap-3 md:gap-4">
+      <nav className="sm:w-[calc(100svw-2rem)]md:w-auto fixed top-2 left-0 z-100 w-full text-white mix-blend-exclusion max-[390px]:top-1 sm:top-3">
+        <div className="mx-auto w-full rounded-sm px-4 py-0.5 sm:w-auto lg:px-6 xl:px-8 2xl:px-10">
+          <div className="flex w-full items-center justify-between gap-2 max-[390px]:gap-1 sm:justify-start sm:gap-3 md:gap-4">
             <div className="flex flex-col">
               <Link
                 href="/"

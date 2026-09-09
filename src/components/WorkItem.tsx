@@ -120,7 +120,7 @@ export default function WorkItem({ work }: WorkItemProps) {
         ) : null}
       </div>
       <div className="mt-4">
-        <h2 className="text-center font-mono font-bold uppercase">
+        <h2 className="mx-auto mb-2 max-w-5/6 text-center font-serif text-2xl leading-none text-balance xl:text-3xl">
           {work.title}
         </h2>
         <p className="text-center font-mono text-[10px] tracking-wider uppercase opacity-60">
