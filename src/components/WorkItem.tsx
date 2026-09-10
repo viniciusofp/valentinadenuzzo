@@ -47,20 +47,6 @@ export default function WorkItem({ work }: WorkItemProps) {
           onTouchStart={play}
           // onTouchEnd={pause}
         >
-          {/* <AnimatePresence>
-            {!isPlaying || isNaN(duration) ? (
-              <motion.img
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1 }}
-                src={thumb.sizes?.half?.url || thumb.url || ""}
-                alt=""
-                className="z-3 h-full w-full object-cover object-center"
-              />
-            ) : null}
-          </AnimatePresence> */}
-
           {isPlaying && !isNaN(duration) ? (
             <div className="absolute bottom-0 left-0 z-7 h-1 w-full bg-stone-800">
               <div
@@ -69,27 +55,35 @@ export default function WorkItem({ work }: WorkItemProps) {
               ></div>
             </div>
           ) : null}
-          <ReactPlayer
-            ref={playerRef}
-            src={work.videoUrl || ""}
-            muted={true}
-            className="h-full w-full object-cover"
-            width={"100%"}
-            height={"100%"}
-            onTimeUpdate={handleProgress}
-            // light={
-            //   <img src="https://i.vimeocdn.com/video/1515732489-eab3fe43638be9b0e1214bb9a3f0254f35e6cfe56ee96481473c013b0238c7db-d?region=us" />
-            // }
-            onPlaying={handleDuration}
-            loop
-            config={{
-              vimeo: {
-                // @ts-ignore
-                muted: true,
-                playbackRate: 2,
-              },
-            }}
-          />
+          {work.videoUrl ? (
+            <ReactPlayer
+              ref={playerRef}
+              src={work.videoUrl || ""}
+              muted={true}
+              className="h-full w-full object-cover"
+              width={"100%"}
+              height={"100%"}
+              onTimeUpdate={handleProgress}
+              // light={
+              //   <img src="https://i.vimeocdn.com/video/1515732489-eab3fe43638be9b0e1214bb9a3f0254f35e6cfe56ee96481473c013b0238c7db-d?region=us" />
+              // }
+              onPlaying={handleDuration}
+              loop
+              config={{
+                vimeo: {
+                  // @ts-ignore
+                  muted: true,
+                  playbackRate: 2,
+                },
+              }}
+            />
+          ) : (
+            <img
+              src={thumb.sizes?.half?.url || thumb.url || ""}
+              alt=""
+              className="z-3 h-full w-full object-cover object-center"
+            />
+          )}
         </div>
         {isPlaying && !isNaN(duration) ? (
           <div className="absolute right-0 -bottom-3.5 z-7 font-mono text-[8px] opacity-50 text-shadow-xs">
@@ -123,9 +117,13 @@ export default function WorkItem({ work }: WorkItemProps) {
         <h2 className="mx-auto mb-2 max-w-5/6 text-center font-serif text-2xl leading-none text-balance xl:text-3xl">
           {work.title}
         </h2>
-        <p className="text-center font-mono text-[10px] tracking-wider uppercase opacity-60">
-          {(work.metadata?.type as Category)?.name} - {work.metadata?.year}
-        </p>
+        {work.metadata?.type || work.metadata?.year ? (
+          <p className="text-center font-mono text-[10px] tracking-wider uppercase opacity-60">
+            {(work.metadata?.type as Category)?.name}
+            {work.metadata?.type && work.metadata?.year ? " - " : null}
+            {work.metadata?.year}
+          </p>
+        ) : null}
       </div>
 
       <CustomCursor className={cn("z-9 hidden group-hover:flex")} />
