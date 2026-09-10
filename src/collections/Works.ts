@@ -146,6 +146,7 @@ export const Works: CollectionConfig = {
               admin: {
                 description: "Ex.: curta-metragem, longa-metragem, etc...",
               },
+              required: true,
             },
           ],
         },
