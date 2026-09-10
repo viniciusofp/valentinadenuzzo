@@ -5,6 +5,7 @@ import { getPayload } from "payload";
 
 import { Metadata } from "next";
 import { CustomRichText } from "@/components/CustomRichText";
+import { Media } from "@/payload-types";
 
 export type BlogPageProps = {
   searchParams: Promise<{ page: string; preview: string }>;
@@ -30,7 +31,18 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
   return (
     <section className="flex min-h-[calc(100svh-160px)] items-center justify-center p-4 lg:p-6 xl:p-8 2xl:p-10">
-      <CustomRichText data={home.about} className="prose mx-auto mb-12" />
+      <div className="grid gap-8 md:flex">
+        {home.img ? (
+          <div className="w-sm max-w-full min-w-xs">
+            <img
+              src={(home.img as Media).url || ""}
+              className="w-full rounded-xs"
+              alt={(home.img as Media).alt}
+            />
+          </div>
+        ) : null}
+        <CustomRichText data={home.about} className="prose mb-12" />
+      </div>
     </section>
   );
 }

@@ -80,7 +80,7 @@ export default function WorkItem({ work }: WorkItemProps) {
           ) : (
             <img
               src={thumb.sizes?.half?.url || thumb.url || ""}
-              alt=""
+              alt={thumb.alt}
               className="z-3 h-full w-full object-cover object-center"
             />
           )}

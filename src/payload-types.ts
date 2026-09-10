@@ -153,7 +153,7 @@ export interface Work {
     [k: string]: unknown;
   } | null;
   frames?: (string | Media)[] | null;
-  metadata?: {
+  metadata: {
     year?: number | null;
     client?: string | null;
     /**
@@ -163,7 +163,7 @@ export interface Work {
     /**
      * Ex.: curta-metragem, longa-metragem, etc...
      */
-    type?: (string | null) | Category;
+    type: string | Category;
   };
   updatedAt: string;
   createdAt: string;
@@ -540,6 +540,7 @@ export interface BlogInfo {
     };
     [k: string]: unknown;
   };
+  img?: (string | null) | Media;
   reel: string | Media;
   email?: string | null;
   phone?: string | null;
@@ -564,6 +565,7 @@ export interface BlogInfoSelect<T extends boolean = true> {
   name?: T;
   description?: T;
   about?: T;
+  img?: T;
   reel?: T;
   email?: T;
   phone?: T;

@@ -30,7 +30,7 @@ const ImageGallery: React.FC<{
               >
                 <img
                   src={image.sizes?.half?.url || image.url || ""}
-                  alt=""
+                  alt={image.alt}
                   className="h-full w-full rounded-xs object-cover object-center"
                 />
               </CarouselItem>

@@ -48,6 +48,12 @@ export const BlogInfo: GlobalConfig = {
       },
     },
     {
+      name: "img",
+      label: "Imagem da Bio",
+      type: "upload",
+      relationTo: "media",
+    },
+    {
       name: "reel",
       label: "Reel",
       type: "upload",
