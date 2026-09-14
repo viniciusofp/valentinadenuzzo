@@ -12,7 +12,8 @@ export type WorkItemProps = { work: Work };
 
 export default function WorkItem({ work }: WorkItemProps) {
   const playerRef = useRef(null);
-  const thumb = (work.frames as Media[])[0];
+  const thumb =
+    work.frames && work.frames.length > 0 ? (work.frames as Media[])[0] : null;
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(NaN);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -77,12 +78,14 @@ export default function WorkItem({ work }: WorkItemProps) {
                 },
               }}
             />
-          ) : (
+          ) : thumb ? (
             <img
               src={thumb.sizes?.half?.url || thumb.url || ""}
               alt={thumb.alt}
               className="z-3 h-full w-full object-cover object-center"
             />
+          ) : (
+            <div className="h-full w-full animate-pulse bg-stone-200"></div>
           )}
         </div>
         {isPlaying && !isNaN(duration) ? (

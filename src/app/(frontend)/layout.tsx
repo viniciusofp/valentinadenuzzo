@@ -8,12 +8,6 @@ import { Chivo_Mono, Hanken_Grotesk, Parastoo } from "next/font/google";
 import React from "react";
 import "./styles.css";
 
-import BG from "@/public/bg.jpg";
-// export const metadata = {
-//   description: "A blank template using Payload in a Next.js app.",
-//   title: "Payload Blank Template",
-// };
-
 const sans = Hanken_Grotesk({
   subsets: ["latin"],
   weight: "variable",

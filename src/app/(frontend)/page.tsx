@@ -3,12 +3,10 @@ import { headers as getHeaders } from "next/headers";
 import config from "@/payload.config";
 import { getPayload } from "payload";
 
-import About from "@/components/About";
-import WorkItem from "@/components/WorkItem";
+import WorkFilteredList from "@/components/WorkFilteredList";
 import { Media } from "@/payload-types";
 import { Metadata } from "next";
 import ReactPlayer from "react-player";
-import WorkFilteredList from "@/components/WorkFilteredList";
 
 export type BlogPageProps = {
   searchParams: Promise<{ page: string; preview: string }>;

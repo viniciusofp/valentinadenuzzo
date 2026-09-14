@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import FadeIn from "./FadeIn";
-import BG from "@/public/tripofobia.png";
 
 export type FooterProps = {};
 

@@ -1,16 +1,10 @@
-import { headers as getHeaders } from "next/headers";
-
 import config from "@/payload.config";
 import { getPayload } from "payload";
 
-import About from "@/components/About";
-import WorkItem from "@/components/WorkItem";
 import { Media } from "@/payload-types";
 import { Metadata } from "next";
-import ReactPlayer from "react-player";
-import WorkFilteredList from "@/components/WorkFilteredList";
-import { redirect } from "next/navigation";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 export type StillPhotographyPageProps = {
   searchParams: Promise<{ page: string; preview: string }>;
 };

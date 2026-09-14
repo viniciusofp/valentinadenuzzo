@@ -1,10 +1,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import WorkItem from "@/components/WorkItem";
 import { cn } from "@/lib/utils";
 import { Category, Work } from "@/payload-types";
-import { useState } from "react";
+import { lazy, useState } from "react";
+import RenderOnViewportEntry from "./RenderOnViewportEntry";
+
+const WorkItem = lazy(() => import("@/components/WorkItem"));
 
 export type WorkFilteredListProps = { works: Work[]; categories: Category[] };
 
@@ -56,7 +58,11 @@ export default function WorkFilteredList({
       </div>
       <div className="mx-auto grid w-full gap-x-12 gap-y-24 p-4 lg:grid-cols-2 lg:px-6 xl:px-8 2xl:px-10">
         {filteredWorks.map((work) => {
-          return <WorkItem key={work.id} work={work} />;
+          return (
+            <RenderOnViewportEntry key={work.id} threshold={0.25}>
+              <WorkItem work={work} />
+            </RenderOnViewportEntry>
+          );
         })}
       </div>
     </section>

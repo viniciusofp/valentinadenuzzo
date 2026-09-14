@@ -1,18 +1,15 @@
-import config from "@/payload.config";
-import Link from "next/link";
-import { getPayload } from "payload";
-import ContactDialog from "./ContactDialog";
-import { MenuIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import config from "@/payload.config";
+import { MenuIcon } from "lucide-react";
+import Link from "next/link";
+import { getPayload } from "payload";
+import ContactDialog from "./ContactDialog";
 
 export type NavProps = {};
 

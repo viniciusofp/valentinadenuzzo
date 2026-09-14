@@ -2,19 +2,15 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
-import { CustomRichText } from "./CustomRichText";
 import { BlogInfo } from "@/payload-types";
-import { Button } from "./ui/button";
 import { ClipboardIcon } from "lucide-react";
-import { useCopyToClipboard } from "usehooks-ts";
 import React, { useEffect } from "react";
 import { toast } from "sonner";
+import { useCopyToClipboard } from "usehooks-ts";
 
 export type ContactDialogProps = { data: BlogInfo; children: React.ReactNode };
 

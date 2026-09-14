@@ -1,5 +1,5 @@
+import { trimRichTextContent } from "@/lib/utils";
 import {
-  BlocksFeature,
   FixedToolbarFeature,
   lexicalEditor,
 } from "@payloadcms/richtext-lexical";
@@ -7,7 +7,6 @@ import { convertLexicalToPlaintext } from "@payloadcms/richtext-lexical/plaintex
 import type { CollectionConfig, Field } from "payload";
 import slugify from "slugify";
 import urlField from "./fields/url-field";
-import { trimRichTextContent } from "@/lib/utils";
 
 export const Works: CollectionConfig = {
   slug: "works",
