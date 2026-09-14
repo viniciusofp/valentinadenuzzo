@@ -20,7 +20,7 @@ export default function RenderOnViewportEntry({
       {entered && (
         <Suspense
           fallback={
-            <div className="aspect-video animate-pulse rounded-xs bg-stone-200">
+            <div className="flex aspect-video animate-pulse items-center justify-center rounded-xs bg-stone-200 font-mono text-xs">
               Loading...
             </div>
           }

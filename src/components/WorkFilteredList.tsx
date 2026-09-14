@@ -59,7 +59,11 @@ export default function WorkFilteredList({
       <div className="mx-auto grid w-full gap-x-12 gap-y-24 p-4 lg:grid-cols-2 lg:px-6 xl:px-8 2xl:px-10">
         {filteredWorks.map((work) => {
           return (
-            <RenderOnViewportEntry key={work.id} threshold={0.25}>
+            <RenderOnViewportEntry
+              key={work.id}
+              threshold={0.25}
+              style={{ minHeight: "360px" }}
+            >
               <WorkItem work={work} />
             </RenderOnViewportEntry>
           );
