@@ -1,3 +1,4 @@
+import { revalidateGlobal } from "@/lib/revalidatePage";
 import { trimRichTextContent } from "@/lib/utils";
 import {
   FixedToolbarFeature,
@@ -8,6 +9,9 @@ import type { GlobalConfig } from "payload";
 export const BlogInfo: GlobalConfig = {
   slug: "blogInfo",
   label: "Informações Gerais",
+  hooks: {
+    afterChange: [revalidateGlobal],
+  },
   fields: [
     {
       name: "name",
